@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  apiserver:
+    container_name: apiserver
+    image: jzsg/fabric-explorer
+    environment:
+      - GODEBUG=netdns=go
+    volumes:
+      - ./client_sdk_explorer.yaml:/opt/bin/client_sdk.yaml
+      - ../crypto-config:/opt/crypto-config
+      - ./db:/opt/bin/db
+    working_dir: /opt/bin/
+    command: ./apiserver start
+    ports:
+      - 3389:5555
+    extra_hosts:
+      - "orderer.example.com: 192.168.204.128"
+      - "orderer2.example.com: 192.168.204.128"
+      - "orderer3.example.com: 192.168.204.128"
+      - "peer0.org2.example.com: 192.168.204.128"
+      - "peer0.org1.example.com: 192.168.204.128"
+

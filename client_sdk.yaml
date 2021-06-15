@@ -1,0 +1,64 @@
+crypto:
+  family: ecdsa
+  algorithm: P256-SHA256
+  hash: SHA2-256
+orderers:
+  orderer0:
+    host: orderer.example.com:7050
+    domainName: orderer.example.com
+    useTLS: true
+    tlsPath: ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+peers:
+  peer01:
+    host: peer0.org1.example.com:7051
+    domainName: peer0.org1.example.com
+    orgName: org1
+    useTLS: true
+    tlsPath: ../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
+eventPeers:
+  peer0:
+    host: peer0.org1.example.com:7051
+    domainName: peer0.org1.example.com
+    orgName: org1
+    useTLS: true
+    tlsPath: ../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
+channel:
+  mspConfigPath: ../crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+  localMspId:          Org1MSP
+  channelId:           mychannel
+  chaincodeName:       mycc
+  chaincodeVersion:    1.0
+  chaincodePolicy:
+    orgs:
+      - org1
+      - org2
+    rule: or
+
+users:
+  _default:
+    mspConfigPath: ../crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+    mspID: Org1MSP
+  admin@org1:
+    mspConfigPath: ../crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+    mspID: Org1MSP
+  admin@org2:
+    mspConfigPath: ../crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+    mspID: Org2MSP
+
+discovery:
+  host: peer0.org1.example.com:7051
+  domainName: peer0.org1.example.com
+  config:
+    version: 0
+    tlsconfig:
+      certpath: ""
+      keypath: ""
+      peercacertpath: ../crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/tls/ca.crt
+      timeout: 0s
+    signerconfig:
+      mspid: Org1MSP
+      identitypath: ../crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
+      keypath: ../crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/priv_sk
+
+apiserver:
+  listenport: 5555
