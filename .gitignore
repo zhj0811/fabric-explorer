@@ -11,7 +11,6 @@ naries for programs and plugins
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 bin/
-docs/
 
 # Dependency directories (remove the comment below to include it)
 

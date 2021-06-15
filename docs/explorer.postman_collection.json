@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "f348f64f-0c2c-42b5-9a8c-d02422ebfcd5",
+		"name": "explorer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取block信息",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{PORT}}/v1/jzsg/block?page=1&count=10",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"v1",
+						"jzsg",
+						"block"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "count",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取区块tx",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{PORT}}/v1/jzsg/block/0",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"v1",
+						"jzsg",
+						"block",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
